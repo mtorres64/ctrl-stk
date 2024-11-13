@@ -1,0 +1,51 @@
+<button type="button" id="modalPrecio"   data-bs-toggle="modal" data-bs-target="#modalPrecio1" style="display: none;"></button>
+<div class="modal fade" id="modalPrecio1">
+    <div class="modal-dialog sombra">
+        <div class="modal-content">
+
+        <ngx-spinner 
+            [name]="spinner1"
+            bdColor = "rgba(0, 0, 0, 0.8" 
+            size = "medium" 
+            color = "#fff" 
+            type = "square-jelly-box" 
+            [fullScreen] = "true">
+        </ngx-spinner>
+    
+        <div class="modal-header">
+            <h4 class="modal-title">Producto</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+    
+        <div class="modal-body">
+
+            {{producto.articulo}} 
+            <br><br>
+            <div class="row mb-3">
+                <label class="col-form-label">Costo $</label>
+                <div class="input-group col-sm-5">
+                    <input type="number" class="form-control" value="0.00" [(ngModel)]="producto.costo" (keyup.enter)="validar_articulo();" style="text-align: right;">
+                    <button class="btn btn-primary" (click)="down()" type="button"><i class="fa-sharp fa-solid fa-caret-down"></i></button>
+                    <button class="btn btn-primary" (click)="up()" type="button"><i class="fa-sharp fa-solid fa-caret-up"></i></button>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-form-label">Precio $</label>
+                <div class="input-group col-sm-5">
+                    <input type="number" class="form-control" value="0.00" [(ngModel)]="producto.precio" (keyup.enter)="validar_articulo();" style="text-align: right; font-size: 30px;">
+                    <button class="btn btn-primary" (click)="down2()" type="button"><i class="fa-sharp fa-solid fa-caret-down"></i></button>
+                    <button class="btn btn-primary" (click)="up2()" type="button"><i class="fa-sharp fa-solid fa-caret-up"></i></button>
+                </div>
+            </div>
+
+        </div>
+    
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" (click)="aceptar()" class="btn btn-success">Guardar</button>
+        </div>
+    
+        </div>
+    </div>
+</div>

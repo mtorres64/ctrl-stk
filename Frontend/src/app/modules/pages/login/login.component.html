@@ -1,0 +1,27 @@
+<div class="card border-primary mb-3" style="max-width: 25rem; margin:0 auto; margin-top:10%; -webkit-box-shadow: 0px 0px 70px 22px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 70px 22px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 70px 22px rgba(0,0,0,0.75);">
+
+<ngx-spinner 
+[name]="spinner1"
+bdColor = "rgba(0, 0, 0, 0.8" 
+size = "medium" 
+color = "#fff" 
+type = "square-jelly-box" 
+[fullScreen] = "true">
+</ngx-spinner>
+
+  <div class="card-body"><br>
+    <h4 class="card-title text-center">Bienvenido</h4>
+    <div class="form-group">
+      <label class="col-form-label mt-2" for="inputDefault">Usuario</label>
+      <input type="text" class="form-control" [(ngModel)]="usuario" placeholder="Ingrese ususario" id="usuario">
+      <label class="col-form-label mt-2" for="inputDefault">Contraseña</label>
+      <input type="password" class="form-control" [(ngModel)]="contrasena" placeholder="Ingrese contraseña" id="contrasena">
+      <button type="button" (click)="logear()" class="form-control btn btn-warning mt-4">Login</button>
+  </div>
+    <br>
+    <p class="card-text text-center">Olvidaste tu contraseña?<br>Haz click <a href="#" class="text-info">aqui</a> para recuperarla.</p>
+  <br>    
+  </div>
+</div>

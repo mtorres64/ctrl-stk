@@ -1,0 +1,26 @@
+
+<div class="container">
+<br>
+<div style="text-align:left; color:rgba(255, 255, 255, 0.6); font-size:12px; margin-top:-20px; margin-left: 25px; margin-bottom:10px;">
+    Mostrando {{ desde }} a {{ hasta }} de {{ lista.totalRows}}
+</div>
+<ul class="pagination justify-content-center" style="margin-top:-20px;">
+    <li class="page-item">
+        <button class="page-link" *ngIf="lista.currentPage===1" disabled (click)="paginar(lista.currentPage-1)" style="border: 0; color:rgb(88, 133, 88);"> « Anterior </button>
+        <button class="page-link text-black" *ngIf="lista.currentPage!==1"          (click)="paginar(lista.currentPage-1)" style="border: 0;"> « Anterior </button>
+    </li>
+    
+    <li [class]="getClaseCSS( x+1 )" *ngFor="let dummy of ' '.repeat(lista.totalPages).split(''), let x = index">
+        <button 
+            *ngIf="(!((x+1)<(lista.currentPage-4)) && !((x+1)>(lista.currentPage+4)))" 
+            class="page-link text-black" (click)="paginar(x+1)">
+            {{x+1}}
+        </button>
+    </li>
+
+    <li class="page-item">
+        <button class="page-link" *ngIf="lista.currentPage===lista.totalPages" disabled (click)="paginar(lista.currentPage+1)" style="border: 0; color:rgb(88, 133, 88);">Siguiente »</button>
+        <button class="page-link text-black" *ngIf="lista.currentPage!==lista.totalPages"          (click)="paginar(lista.currentPage+1)" style="border: 0;">Siguiente »</button>
+    </li>
+</ul>
+</div>

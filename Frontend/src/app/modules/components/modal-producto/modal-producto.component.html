@@ -1,0 +1,124 @@
+<button type="button" id="modalProducto" data-bs-toggle="modal" data-bs-target="#modalProducto1" style="display: none;"></button>
+<div class="modal fade" id="modalProducto1">
+    <div class="modal-dialog sombra">
+        <div class="modal-content">
+
+        <ngx-spinner 
+            [name]="spinner1"
+            bdColor = "rgba(0, 0, 0, 0.8)" 
+            size = "medium" 
+            color = "#fff" 
+            type = "square-jelly-box" 
+            [fullScreen] = "true">
+        </ngx-spinner>
+    
+        <div class="modal-header">
+            <h4 class="modal-title">Producto</h4>
+            <button type="button" (click)="cancelar()" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <!--
+        <div class="container" 
+             (click)="seleccionarArchivo()" 
+             style="background-color:rgb(165, 165, 165); height:250px; color: rgb(32, 32, 32); text-align: center; 
+             background-image: url({{fotoPrevia}}); background-repeat: no-repeat; background-position: center; background-size:cover;">
+            <br><br><br><br><br>    
+        </div>
+
+        <input class="form-control" type="file" #fileInput id="archivo" (change)="tomarImagen( $event )" style="display: none;">
+        -->
+    
+        <div class="modal-body">
+
+            <div class="row mb-3">
+                <div class="col-sm-5">
+                    <label class="col-form-label">Codigo de Barras</label>
+                </div>
+                <div class="col-sm-7 input-group">
+                    <input type="text" id="txtCodigo" class="form-control" placeholder="Codigo de Barras" [(ngModel)]="producto.codigo_barra" disabled (keyup.enter)="validar_articulo();" (change)="buscar_articulo();" style="background-color: rgb(172, 172, 172);">
+                    <button class="btn btn-primary" type="button" for="txtCodigo"><i class="fa-solid fa-qrcode"></i></button>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-sm-5">
+                    <label class="col-form-label">Nombre del producto</label>
+                </div>
+                <div class="col-sm-7 input-group">
+                    <input type="text" class="form-control" placeholder="Nombre del producto" [(ngModel)]="producto.articulo" (keyup.enter)="validar_articulo();">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-sm-5">
+                    <label class="col-form-label">Codigo del producto</label>
+                    <input type="text" class="form-control" placeholder="Codigo interno de identidficacion" (keyup.enter)="validar_articulo();">
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <div class="col-sm-5">
+                    <label class="col-form-label">Marca</label>
+                </div>
+                <div class="input-group col-sm-7">
+                    <select class="form-select" [(ngModel)]="producto.id_marca">
+                        <option *ngFor="let marca of marcas"
+                                [value]="marca.cod_marca">
+                            {{ marca.marca }}
+                        </option>
+                    </select>
+                    <button class="btn btn-primary" type="button"><i class="fa-solid fa-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="row mb-2">
+                <div class="col-sm-4">
+                    <label class="col-form-label">Categoria</label>
+                </div>
+                <div class="input-group col-sm-7">
+                    <select class="form-select" [(ngModel)]="producto.id_categoria">
+                        <option *ngFor="let categoria of categorias"
+                                [value]="categoria.cod_categoria">
+                            {{ categoria.categoria }}
+                        </option>
+                    </select>
+                    <button class="btn btn-primary" type="button"><i class="fa-solid fa-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-form-label">Costo $</label>
+                <div class="input-group col-sm-5">
+                    <input type="number" class="form-control" value="0.00" [(ngModel)]="producto.costo" (keyup.enter)="validar_articulo();" style="text-align: right;">
+                    <button class="btn btn-primary" (click)="down2()" type="button"><i class="fa-sharp fa-solid fa-caret-down"></i></button>
+                    <button class="btn btn-primary" (click)="up2()" type="button"><i class="fa-sharp fa-solid fa-caret-up"></i></button>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-form-label">Precio $</label>
+                <div class="input-group col-sm-5">
+                    <input type="number" class="form-control" value="0.00" [(ngModel)]="producto.precio" (keyup.enter)="validar_articulo();" style="text-align: right;">
+                    <button class="btn btn-primary" (click)="down3()" type="button"><i class="fa-sharp fa-solid fa-caret-down"></i></button>
+                    <button class="btn btn-primary" (click)="up3()" type="button"><i class="fa-sharp fa-solid fa-caret-up"></i></button>
+                </div>
+            </div>
+
+            <div class="row mb-3"><label class="col-form-label">Stock</label>
+                <div class="input-group col-sm-5">
+                    <input type="number" class="form-control" value="0" [(ngModel)]="producto.stock" (keyup.enter)="validar_articulo();" style="text-align: right;">
+                    <button class="btn btn-primary" (click)="down()" type="button"><i class="fa-sharp fa-solid fa-caret-down"></i></button>
+                    <button class="btn btn-primary" (click)="up()" type="button"><i class="fa-sharp fa-solid fa-caret-up"></i></button>
+                </div>
+            </div>
+
+        </div>
+    
+        <div class="modal-footer">
+            <button type="button" (click)="cancelar()" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" (click)="aceptar()" class="btn btn-success">Guardar</button>
+        </div>
+    
+        </div>
+    </div>
+</div>

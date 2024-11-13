@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+
+<ngx-spinner 
+    [name]="spinner1"
+    bdColor = "rgba(0, 0, 0, 0.8" 
+    size = "medium" 
+    color = "#fff" 
+    type = "square-jelly-box" 
+    [fullScreen] = "true">
+</ngx-spinner>
+
+<app-filtro-producto 
+    (getarticulos)="trae_productos( $event )">
+</app-filtro-producto>
+
+<app-grilla-producto
+    (emiteProductos)="bindProductosPaginado( $event )"
+    (emiteProducto)="trae_producto( $event )"
+    (emiteCambioStock)="cambioStock( $event )"
+    (emiteCambioPrecio)="cambioPrecio( $event )"
+    (emiteCambio)="trae_productos( $event )"
+    (emiteEliminaProducto)="abrirConfirmacion( $event )">    
+</app-grilla-producto>
+
+<app-paginacion
+    [lista]="productosResponse"
+    [filtro]="solicitud.filtro"
+    (paginado)="trae_productos( $event )">
+</app-paginacion>
+
+<app-modal-producto
+    [datosFiltro]="solicitud.filtro"
+    (emiteCambio)="trae_productos( $event )"
+></app-modal-producto>
+
+<app-modal-stock
+    [datosFiltro]="solicitud.filtro"
+    (emiteCambio)="trae_productos( $event )">
+</app-modal-stock>
+
+<app-modal-precio
+    [datosFiltro]="solicitud.filtro"
+    (emiteCambio)="trae_productos( $event )">
+</app-modal-precio>
+
+<app-modal
+    [datosModal]="errorModal">
+</app-modal>
+
+<app-modal-eliminar
+    [datosModal]="eliminarModal"
+    [descripcion]="descripcion"
+    (clickElimina)="eliminar( $event )">
+</app-modal-eliminar>

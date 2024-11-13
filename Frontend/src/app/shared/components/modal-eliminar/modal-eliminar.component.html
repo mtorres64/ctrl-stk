@@ -1,0 +1,24 @@
+<button type="button" [id]="datosModal.nombre" data-bs-toggle="modal" data-bs-target="#myModal3" style="display: none;"></button>
+
+<div class="modal fade" id="myModal3" >
+    <div class="modal-dialog sombra">
+        <div class="modal-content">
+    
+        <div class="modal-header">
+            <h4 class="modal-title">{{ datosModal.header }}</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+    
+        <div class="modal-body text-center">
+            {{ descripcion }}<br><br>
+            {{ datosModal.body }}
+        </div>
+    
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" (click)="aceptar(id)" class="btn btn-danger">Eliminar</button>
+        </div>
+    
+        </div>
+    </div>
+</div>

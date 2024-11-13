@@ -1,0 +1,65 @@
+<br><br>
+<div class="container">
+    <div class="form-group">
+        
+        <div class="row">
+
+            <div class="form-group col-md-4"><i class="fa-solid fa-filter"></i> Filtros 
+                <div class="input-group col-md-12">
+                <input  type="text" 
+                        class="form-control" 
+                        id="inpBuscar" 
+                        placeholder="Codigo, Nombre, Marca..." 
+                        (keyup.enter)="trae_articulos();" 
+                        style="border:1px solid green;"
+                        [(ngModel)]="filtro"> 
+                
+            </div>
+            </div>
+
+            <div class="form-group col-md-2"><i class="fa-solid fa-toggle-on"></i> Estado
+                <select id="selEstado" 
+                        class="form-control" 
+                        (change)="trae_articulos()"
+                        [(ngModel)]="estado">
+                <option value="0" selected>TODOS</option>
+                <option value="1">ACTIVOS</option>
+                <option value="2">INACTIVOS</option>
+                </select>
+            </div>
+            
+            <div class="form-group col-md-2"><i class="fa-solid fa-sitemap"></i> Categoría
+                <select class="form-control" id="selCategoria" 
+                        (change)="trae_articulos()"
+                        [(ngModel)]="categoria">
+                    <option *ngFor="let categoria of categorias"
+                        [value]="categoria.cod_categoria">
+                        {{ categoria.categoria }}
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-2"><i class="fa-solid fa-arrow-down-a-z"></i> Orden 
+                <select id="selOrden" 
+                        class="form-control" 
+                        (change)="trae_articulos()"
+                        [(ngModel)]="orden">
+                <option value="1" selected>Más recientes</option>
+                <option value="2">Por Stock (decreciente)</option>
+                <option value="3">Alfabético</option>
+                </select>
+            </div>
+            
+            <div class="form-group col-md-2"><br>
+                <button (click)="limpiarFiltros()" 
+                        class="btn btn-warning" 
+                        style="width:100%;">
+                    <div id="div-proc-trae-insc"> Limpiar filtros</div>
+                </button>
+            </div>
+              
+        </div>
+
+    </div>
+
+</div>

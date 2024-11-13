@@ -1,0 +1,57 @@
+<br><br>
+<div class="container">
+
+  <div class="card text-white bg-secondary mb-3" >
+    <div class="card-header bg-dark">
+      <label class="col-form-label">
+      <img src="./../../../../assets/blub-orange.png" height="20"> <font size=3 style="margin-left: 10px;;"> Productos</font></label>
+      <button type="button" (click)="agregarProducto(0)" class="btn btn-warning" style="float:right;"><i class="fa-sharp fa-solid fa-plus"></i>  </button>
+    </div>
+    <div class="card-body" style="padding:0;">
+      <table class="table table-hover">
+
+        <thead>
+          <tr class="table-success" style="color:black;">
+            <th></th>
+            <th scope="col" style="text-align: center;">Id</th>
+            <th scope="col">                            Articulo</th>
+            <th scope="col">                            Marca</th>
+            <th scope="col" style="text-align: center;">Categoría</th>
+            <th scope="col" style="text-align: center;">Stock</th>
+            <th scope="col" style="text-align: center;">Precio</th>
+            <th scope="col" style="text-align: center;">Estado</th>
+            <th scope="col" style="text-align: right;">Opciones</th>
+          </tr>
+        </thead>
+    
+        <tbody>
+          <tr class="table-dark seleccionable" *ngFor="let producto of productosResponse.Rows">
+            <td style="text-align: center; vertical-align: middle; color: rgb(122, 121, 121);"><i class="fa-solid fa-tag"></i></td>
+            <td style="text-align: center; vertical-align: middle; color: lightgray;">{{ producto.id }}</td>
+            <td style="text-align: left; vertical-align: middle;"><b>{{ producto.articulo }}</b></td>
+            <td style="text-align: left; vertical-align: middle; color: lightgray;">{{ producto.marca }}</td>
+            <td style="text-align: center; vertical-align: middle; color: lightgray;">{{ producto.categoria }}</td>
+            <td style="text-align: center; vertical-align: middle;"><button type="button" class="btn btn-secondary btn-sm" (click)="abrirCambioStock(0,producto.id)">{{ producto.stock }}</button></td>
+            <td style="text-align: center; vertical-align: middle;"><button type="button" class="btn btn-outline-success btn-sm" (click)="abrirCambioPrecio(1,producto.id)">{{ producto.precio | currency: 'USD' | lowercase }}</button></td>
+            <td [class]="getClaseCSS(producto.estado)" style="text-align: center; vertical-align: middle;">{{ producto.estado }}</td>
+            <td style="text-align: right;">
+              
+
+              <div class="btn-group">
+                <button *ngIf="producto.estado=='Activo'" type="button" class="btn btn-primary btn-sm" (click)="desactivarProducto(producto.id)"><i class="fa-solid fa-toggle-on"></i></button>
+                <button *ngIf="producto.estado=='Inactivo'" type="button" class="btn btn-primary btn-sm" (click)="activarProducto(producto.id)"><i class="fa-solid fa-toggle-off"></i></button>
+                
+                <button type="button" class="btn btn-primary btn-sm" (click)="agregarProducto(producto.id)"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button type="button" class="btn btn-primary btn-sm" (click)="abrirConfirmacion(producto.id,producto.articulo)"><i class="fa-solid fa-trash"></i></button>
+              </div>
+            </td>
+          </tr>
+         </tbody>
+          
+        </table>
+    </div>
+  </div>
+
+
+  
+</div>
