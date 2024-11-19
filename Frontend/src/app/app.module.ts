@@ -20,6 +20,7 @@ import { ModalProductoComponent } from './modules/components/modal-producto/moda
 import { ModalStockComponent } from './modules/components/modal-stock/modal-stock.component';
 import { ModalPrecioComponent } from './modules/components/modal-precio/modal-precio.component';
 import { ModalEliminarComponent } from './shared/components/modal-eliminar/modal-eliminar.component';
+import { ModalMarcaComponent } from './modules/components/modal-marca/modal-marca.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ModalEliminarComponent } from './shared/components/modal-eliminar/modal
     ModalProductoComponent,
     ModalStockComponent,
     ModalPrecioComponent,
-    ModalEliminarComponent
+    ModalEliminarComponent,
+    ModalMarcaComponent
   ],
   imports: [
     BrowserModule,

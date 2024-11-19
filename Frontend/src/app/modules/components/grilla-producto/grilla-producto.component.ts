@@ -24,6 +24,7 @@ export class GrillaProductoComponent{
   @Output() emiteCambio : EventEmitter<DatosFiltroProducto> = new EventEmitter();
   @Output() emiteProductos : EventEmitter<productosResponse> = new EventEmitter();
   @Output() emiteEliminaProducto : EventEmitter<datosEliminar> = new EventEmitter();
+  @Output() emiteAltaMarca : EventEmitter<number> = new EventEmitter();
 
   p : number = 1;
 
@@ -91,10 +92,11 @@ export class GrillaProductoComponent{
   }
 
   activarProducto(idProducto: number){
+    this.spinner.show('sp1');
     this.ProductosServices.activarProducto(idProducto)
       .subscribe( respuesta => {
-        this.spinner.hide('sp1');
         this.emiteCambio.emit(this.solicitud.filtro);
+        this.spinner.hide('sp1');
       },
       (error) =>{
         this.spinner.hide('sp1');
@@ -102,10 +104,11 @@ export class GrillaProductoComponent{
   }
 
   desactivarProducto(idProducto: number){
+    this.spinner.show('sp1');
     this.ProductosServices.desactivarProducto(idProducto)
     .subscribe( respuesta => {
-      this.spinner.hide('sp1');
       this.emiteCambio.emit(this.solicitud.filtro);
+      this.spinner.hide('sp1');
     },
     (error) =>{
       this.spinner.hide('sp1');

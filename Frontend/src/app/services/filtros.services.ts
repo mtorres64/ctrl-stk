@@ -31,5 +31,9 @@ export class FiltrosService{
       const headers = { 'content-type': 'application/json'}  
       return this.http.post<MarcaProducto[]>('http://localhost:4000/api/marcas',{'headers':headers})
     }
-     
+
+    getMarca(idMarca: number): Observable<MarcaProducto[]>{
+      const headers = { 'content-type': 'application/json'}  
+      return this.http.get<MarcaProducto[]>('http://localhost:4000/api/marcas/'+idMarca,{'headers':headers})
+    }
 }

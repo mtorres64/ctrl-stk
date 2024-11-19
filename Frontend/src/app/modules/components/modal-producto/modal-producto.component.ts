@@ -33,10 +33,17 @@ export class ModalProductoComponent{
 
   fotoPrevia! : string;
   archivoFoto : any;
+  idMarca! : number;
+
+  marca : MarcaProducto={
+    cod_marca : 0,
+    marca : ""
+  };
 
   @Input() categorias! : CategoriaProducto[];
   @Input() marcas! : MarcaProducto[];
   @Output() emiteCambio : EventEmitter<DatosFiltroProducto> = new EventEmitter();
+  @Output() emiteMarca: EventEmitter<MarcaProducto> = new EventEmitter();
   @Input() datosFiltro!: DatosFiltroProducto;
 
   spinner1 = 'sp1';
@@ -66,8 +73,6 @@ export class ModalProductoComponent{
   aceptar(){ 
     this.spinner.show('sp1');
 
-    
-
     this.ProductosServices.putProducto(this.producto)
       .subscribe( respuesta => {
         this.emiteCambio.emit(this.datosFiltro);
@@ -81,7 +86,7 @@ export class ModalProductoComponent{
   }
 
   trae_productoModal(idProducto: number){
-    
+    this.spinner.show('sp1');
     if(idProducto == 0){
       this.producto = {
         id_articulo : 0,  
@@ -101,7 +106,7 @@ export class ModalProductoComponent{
 
       this.getCategorias();
       this.getMarcas();
-
+      this.spinner.hide('sp1');
       document.getElementById("modalProducto")?.click();  
     }
     else{
@@ -140,6 +145,16 @@ export class ModalProductoComponent{
     this.producto.precio -= 1; 
   }
 
+  abrirMarca(idMarca: number){
+    if(idMarca != 0){
+      this.getMarca(idMarca);
+    }
+    else{
+      this.emiteMarca.emit(this.marca);
+    }
+    document.getElementById("modalMarca")?.click(); 
+  }
+
   getCategorias(){
     this.filtrosService.getCategorias()
     .subscribe( 
@@ -165,6 +180,20 @@ export class ModalProductoComponent{
       },
       (err) =>{
         
+      });
+  }
+
+  getMarca(idMarca: number){
+    this.spinner.show('sp1');
+    this.filtrosService.getMarca(idMarca)
+    .subscribe( 
+      (resp) => {
+          this.marca = resp[0];
+          this.emiteMarca.emit(this.marca);
+          this.spinner.hide('sp1');
+      },
+      (err) =>{
+        this.spinner.hide('sp1');
       });
   }
 

@@ -1,5 +1,5 @@
 import { Component, Input, Output, ViewChild, EventEmitter } from '@angular/core';
-import { DatosFiltroProducto } from '../../../interfaces/fitros.interfeces';
+import { DatosFiltroProducto, MarcaProducto } from '../../../interfaces/fitros.interfeces';
 import { productosResponse, solicitudListaProductos, cambioStock, productoItem, productoGrilla, datosEliminar } from '../../../interfaces/productos.interfaces';
 import { ProductosServices } from '../../../services/productos.services';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -9,6 +9,7 @@ import { ModalStockComponent } from '../../components/modal-stock/modal-stock.co
 import { ModalPrecioComponent } from '../../components/modal-precio/modal-precio.component';
 import { GrillaProductoComponent } from '../../components/grilla-producto/grilla-producto.component';
 import { ModalEliminarComponent } from '../../../shared/components/modal-eliminar/modal-eliminar.component';
+import { ModalMarcaComponent } from '../../components/modal-marca/modal-marca.component';
 
 @Component({
   selector: 'app-productos',
@@ -18,6 +19,8 @@ import { ModalEliminarComponent } from '../../../shared/components/modal-elimina
 export class ProductosComponent{
   spinner1 = 'sp1';
   descripcion : string = '';
+
+  
 
   @ViewChild(ModalProductoComponent)
     private modalProductoComponent!: ModalProductoComponent;
@@ -45,6 +48,11 @@ export class ProductosComponent{
        this.GrillaProductoComponent.trae_productos(datosFiltro);
        this.solicitud.filtro = datosFiltro;
     }  
+  @ViewChild(ModalMarcaComponent)
+    private ModalMarcaComponent!: ModalMarcaComponent;
+    abrirMarca(Marca: MarcaProducto) {
+       this.ModalMarcaComponent.abrirMarca(Marca);
+    }
 
     productosResponse: productosResponse = {
       totalRows       :0,

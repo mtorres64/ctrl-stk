@@ -14,6 +14,7 @@ export class ModalPrecioComponent {
 
   @Input() datosFiltro!: DatosFiltroProducto;
   @Output() emiteCambio : EventEmitter<DatosFiltroProducto> = new EventEmitter();
+  @Output() emiteAltaMarca : EventEmitter<number> = new EventEmitter();
 
   producto: productoItem = {
     id_articulo : 0,  

@@ -2,7 +2,7 @@
 
 <ngx-spinner 
     [name]="spinner1"
-    bdColor = "rgba(0, 0, 0, 0.8" 
+    bdColor = "rgba(0, 0, 0, 0.8)" 
     size = "medium" 
     color = "#fff" 
     type = "square-jelly-box" 
@@ -19,7 +19,7 @@
     (emiteCambioStock)="cambioStock( $event )"
     (emiteCambioPrecio)="cambioPrecio( $event )"
     (emiteCambio)="trae_productos( $event )"
-    (emiteEliminaProducto)="abrirConfirmacion( $event )">    
+    (emiteEliminaProducto)="abrirConfirmacion( $event )">
 </app-grilla-producto>
 
 <app-paginacion
@@ -31,6 +31,7 @@
 <app-modal-producto
     [datosFiltro]="solicitud.filtro"
     (emiteCambio)="trae_productos( $event )"
+    (emiteMarca)="abrirMarca( $event )"
 ></app-modal-producto>
 
 <app-modal-stock
@@ -42,6 +43,8 @@
     [datosFiltro]="solicitud.filtro"
     (emiteCambio)="trae_productos( $event )">
 </app-modal-precio>
+
+<app-modal-marca></app-modal-marca>
 
 <app-modal
     [datosModal]="errorModal">

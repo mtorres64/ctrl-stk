@@ -61,13 +61,14 @@
                     <label class="col-form-label">Marca</label>
                 </div>
                 <div class="input-group col-sm-7">
+                    <button class="btn btn-primary" title="Editar" type="button" (click)="abrirMarca( producto.id_marca )"><i class="fa-solid fa-pen"></i></button>
                     <select class="form-select" [(ngModel)]="producto.id_marca">
                         <option *ngFor="let marca of marcas"
                                 [value]="marca.cod_marca">
                             {{ marca.marca }}
                         </option>
                     </select>
-                    <button class="btn btn-primary" type="button"><i class="fa-solid fa-plus"></i></button>
+                    <button class="btn btn-primary" type="button" (click)="abrirMarca( 0 )"><i class="fa-solid fa-plus"></i></button>
                 </div>
             </div>
 
